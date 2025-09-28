@@ -12,22 +12,16 @@ export const tabs = [
 
 export const App = () => {
   const [tab, setTabSelected] = useState('tab-1');
-  const activeTabId = tab;
+  const active = tabs.find(t => t.id === tab) || tabs[0];
 
   return (
     <div className="section">
-      <h1 className="title">
-        Selected tab is {tabs.filter(tabe => tabe.id === tab)[0].title}
-      </h1>
+      <h1 className="title">Selected tab is {active.title}</h1>
 
-      <Tabs
-        tabs={tabs}
-        activeTabId={activeTabId}
-        onTabSelected={setTabSelected}
-      />
+      <Tabs tabs={tabs} activeTabId={tab} onTabSelected={setTabSelected} />
 
       <div className="block" data-cy="TabContent">
-        {tabs.filter(tabe => tabe.id === tab)[0].content}
+        {active.content}
       </div>
     </div>
   );
