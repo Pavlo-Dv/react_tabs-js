@@ -19,10 +19,6 @@ export const App = () => {
       <h1 className="title">Selected tab is {active.title}</h1>
 
       <Tabs tabs={tabs} activeTabId={tab} onTabSelected={setTabSelected} />
-
-      <div className="block" data-cy="TabContent">
-        {active.content}
-      </div>
     </div>
   );
 };
